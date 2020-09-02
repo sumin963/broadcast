@@ -69,7 +69,7 @@ func (b *Broadcaster) Send(v interface{}) {
 		select{
 			case l <- v:
 			default:
-	}
+		}
 }
 
 // Close closes the channel, disabling the sending of further messages.
