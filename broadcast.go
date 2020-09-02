@@ -66,7 +66,9 @@ func (b *Broadcaster) Send(v interface{}) {
 		panic("broadcast: send after close")
 	}
 	for _, l := range b.listeners {
-		l <- v
+		select{
+			case l <- v:
+			default:
 	}
 }
 
